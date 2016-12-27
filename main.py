@@ -2,6 +2,7 @@ from PyQt4 import QtCore, QtGui
 
 import sqlite3
 import feedparser
+import uimainwindow as mw
 
 
 #
@@ -91,7 +92,7 @@ def refresh_subscriptions_list(ui):
     sql_string = "SELECT DISTINCT feed_name FROM subscriptions"
     cursor.execute(sql_string)
 
-    # add all distince feed_names  to the subscriptionsListWidget
+    # add all distinct feed_names  to the subscriptionsListWidget
     feed_names_list = cursor.fetchall()
     # cursor.fetchall() returns a list of tuples - convert to list of strings
     feed_names_list = [''.join(x) for x in feed_names_list]
@@ -319,7 +320,7 @@ if __name__ == "__main__":
 
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = mw.UiMainWindow()
     ui.setupUi(MainWindow)
 
     # DB STUFF
