@@ -77,3 +77,23 @@ def refresh_subscriptions_list(ui):
 
     cursor.close()
     connection.close()
+
+
+#
+# Make sure feeds.db exists and contains two tables - subscriptions and articles
+#
+def initialize_db():
+    connection = sqlite3.connect('feeds.db')
+    cursor = connection.cursor()
+
+    # Create the subscriptions table if it doesnt exist
+    subscription_table_string = '''CREATE TABLE IF NOT EXISTS subscriptions
+                                   (id INTEGER PRIMARY KEY, feed_name TEXT, link TEXT)'''
+    cursor.execute(subscription_table_string)
+
+    articles_table_string = '''CREATE TABLE IF NOT EXISTS articles
+                               (feed_name TEXT, title TEXT, summary TEXT, link TEXT, date_published TEXT)'''
+    cursor.execute(articles_table_string)
+
+    cursor.close()
+    connection.close()
