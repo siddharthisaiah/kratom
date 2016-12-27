@@ -54,3 +54,26 @@ def parse_feed(url):
     cursor.close()
     connection.commit()
     connection.close()
+
+
+#
+# Refresh the subscriptionsListWidget
+#
+def refresh_subscriptions_list(ui):
+    # query the db for distinct feed_names
+    connection = sqlite3.connect('feeds.db')
+    cursor = connection.cursor()
+    sql_string = "SELECT DISTINCT feed_name FROM subscriptions"
+    cursor.execute(sql_string)
+
+    # add all distinct feed_names  to the subscriptionsListWidget
+    feed_names_list = cursor.fetchall()
+    # cursor.fetchall() returns a list of tuples - convert to list of strings
+    feed_names_list = [''.join(x) for x in feed_names_list]
+
+    # remove old list before populating list
+    ui.subscriptionsListWidget.clear()
+    ui.subscriptionsListWidget.addItems(feed_names_list)
+
+    cursor.close()
+    connection.close()
