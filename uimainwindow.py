@@ -24,6 +24,11 @@ class UiMainWindow(ui_MainWindow.Ui_MainWindow):
         self.articlesListWidget.itemClicked.connect(self.load_summary)
 
         # Menu bar actions
+        self.actionMenu_New_Feed.triggered.connect(self.add_new_feed)
+        self.actionMenu_Close.triggered.connect(QtGui.qApp.quit)
+        self.actionMenu_Refresh_All_Feeds.triggered.connect(self.refresh_feeds)
+        self.actionMenu_Refresh_Selected_Feed.triggered.connect(self.refresh_single_feed)
+        self.actionMenu_Delete_Feed.triggered.connect(self.delete_feed)
 
     def add_new_feed(self):
         new_feed_dialog = QtGui.QDialog()
@@ -71,6 +76,20 @@ class UiMainWindow(ui_MainWindow.Ui_MainWindow):
         for link in feed_links:
             kratom.parse_feed(link)
             print("Parsing feed: {name}".format(name=link))
+
+    def refresh_single_feed(self):
+        feed_listItemObject = self.subscriptionsListWidget.currentItem()
+        feed_name = self.subscriptionsListWidget.currentItem().text()
+
+        # get url of the feed_name
+        connection = sqlite3.connect('feeds.db')
+        cursor = connection.cursor()
+        get_link_sql = "SELECT link FROM subscriptions WHERE feed_name = '{feed}'".format(feed=feed_name)
+        url_list = cursor.execute(get_link_sql).fetchall()
+        url = url_list[0][0]
+
+        # parse the single feed
+        kratom.parse_feed(url)
 
     # load a list of articles into the articlesListWidget
     def load_articles(self, item):
