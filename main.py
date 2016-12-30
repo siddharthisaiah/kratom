@@ -1,20 +1,14 @@
 from PyQt4 import QtCore, QtGui
+from PyQt4 import QtWebKit
 
 import sqlite3
 import feedparser
 import uimainwindow as mw
 import kratom
+import sys
 
 
 def main():
-    pass
-    # TODO: put all code in the 'if __name__ == "__main__":' into this function
-
-from PyQt4 import QtWebKit
-
-if __name__ == "__main__":
-    import sys
-
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
     ui = mw.UiMainWindow()
@@ -29,6 +23,12 @@ if __name__ == "__main__":
 
     MainWindow.show()
     sys.exit(app.exec_())
+
+
+if __name__ == "__main__":
+    main()
+
+
 
 
 
