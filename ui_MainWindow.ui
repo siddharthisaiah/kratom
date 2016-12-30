@@ -47,6 +47,31 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionMenu_New_Feed"/>
+    <addaction name="separator"/>
+    <addaction name="actionMenu_Close"/>
+   </widget>
+   <widget class="QMenu" name="menuActions">
+    <property name="title">
+     <string>Actions</string>
+    </property>
+    <addaction name="actionMenu_Refresh_All_Feeds"/>
+    <addaction name="actionMenu_Refresh_Selected_Feed"/>
+    <addaction name="actionMenu_Delete_Feed"/>
+   </widget>
+   <widget class="QMenu" name="menuPreferences">
+    <property name="title">
+     <string>Preferences</string>
+    </property>
+    <addaction name="actionMenu_Settings"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuActions"/>
+   <addaction name="menuPreferences"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -119,6 +144,51 @@
    </property>
    <property name="toolTip">
     <string>Check for new articles</string>
+   </property>
+  </action>
+  <action name="actionMenu_New_Feed">
+   <property name="text">
+    <string>New Feed</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+N</string>
+   </property>
+  </action>
+  <action name="actionMenu_Close">
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+W</string>
+   </property>
+  </action>
+  <action name="actionMenu_Refresh_All_Feeds">
+   <property name="text">
+    <string>Refresh All Feeds</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+R</string>
+   </property>
+  </action>
+  <action name="actionMenu_Refresh_Selected_Feed">
+   <property name="text">
+    <string>Refresh Selected Feed</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+Shift+R</string>
+   </property>
+  </action>
+  <action name="actionMenu_Delete_Feed">
+   <property name="text">
+    <string>Delete Feed</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+D</string>
+   </property>
+  </action>
+  <action name="actionMenu_Settings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

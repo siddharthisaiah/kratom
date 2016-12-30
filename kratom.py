@@ -87,6 +87,7 @@ def initialize_db():
     cursor = connection.cursor()
 
     # Create the subscriptions table if it doesnt exist
+    # TODO: add column 'last modified' to keep track of feed if it needs to be downloaded again or not.
     subscription_table_string = '''CREATE TABLE IF NOT EXISTS subscriptions
                                    (id INTEGER PRIMARY KEY, feed_name TEXT, link TEXT)'''
     cursor.execute(subscription_table_string)
@@ -97,3 +98,6 @@ def initialize_db():
 
     cursor.close()
     connection.close()
+
+# TODO: implement a function to get all new articles from all feeds
+# TODO: implement a function to get new articles from a single feed

@@ -5,6 +5,7 @@ import sqlite3
 from PyQt4 import QtCore, QtGui
 from PyQt4 import QtWebKit
 
+# TODO: Create a settings window to configure user settings
 
 class UiMainWindow(ui_MainWindow.Ui_MainWindow):
     def __init__(self):
@@ -21,6 +22,8 @@ class UiMainWindow(ui_MainWindow.Ui_MainWindow):
         # list widget actions
         self.subscriptionsListWidget.itemClicked.connect(self.load_articles)
         self.articlesListWidget.itemClicked.connect(self.load_summary)
+
+        # Menu bar actions
 
     def add_new_feed(self):
         new_feed_dialog = QtGui.QDialog()
