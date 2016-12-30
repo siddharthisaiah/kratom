@@ -19,7 +19,8 @@ def main():
 
     # refresh subscriptions list
     kratom.refresh_subscriptions_list(ui)
-    # TODO: create a function call to get_new_feeds() or something similar to check for new articles if the last modified date has been changed
+    # check for new articles
+    ui.refresh_feeds()
 
     MainWindow.show()
     sys.exit(app.exec_())
