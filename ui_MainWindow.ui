@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Kratom</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/kratom.png</normaloff>icons/kratom.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -26,8 +30,8 @@
         <enum>Qt::Vertical</enum>
        </property>
        <widget class="QListWidget" name="articlesListWidget"/>
-       <widget class="QWebView" name="webView">
-        <property name="url">
+       <widget class="QWebView" name="webView" native="true">
+        <property name="url" stdset="0">
          <url>
           <string>about:blank</string>
          </url>
