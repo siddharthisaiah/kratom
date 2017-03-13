@@ -64,20 +64,17 @@ class UiMainWindow(ui_MainWindow.Ui_MainWindow):
 
     @staticmethod
     def refresh_feeds():
-        # TODO: make this work with the modified parse_feed function
         # get a list of distinct feed urls
         # send them to parse_feed
         # if user has selected a feed - updated the articles list for that feed
 
         connection = sqlite3.connect('feeds.db')
         cursor = connection.cursor()
-        feed_links = cursor.execute("SELECT DISTINCT link FROM subscriptions")
-        feed_links = [link[0] for link in feed_links]
+        feed_links = cursor.execute("SELECT DISTINCT link, date_modified FROM subscriptions").fetchall()  # returns a list of sets [(link1, date_modified),(link2, date_modified)]
 
-        for link in feed_links:
-            # TODO: make threads do this
-            kratom.parse_feed(link)
-            print("Parsing feed: {name}".format(name=link))
+        for link, date_modified in feed_links:
+            print("Parsing feed: {name}, last updated at {dm}".format(name=link, dm=date_modified))
+            kratom.parse_feed(link, date_modified)
 
     def refresh_single_feed(self):
         feed_listItemObject = self.subscriptionsListWidget.currentItem()

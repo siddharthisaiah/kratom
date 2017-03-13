@@ -27,7 +27,6 @@ def new_subscription(url):
         print("Cannot add new subscription.")
 
 
-
 #
 # Parse feed url
 #

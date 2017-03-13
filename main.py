@@ -20,7 +20,7 @@ def main():
     # refresh subscriptions list
     kratom.refresh_subscriptions_list(ui)
     # check for new articles
-    # ui.refresh_feeds()
+    ui.refresh_feeds()
 
     MainWindow.show()
     sys.exit(app.exec_())
