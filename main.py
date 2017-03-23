@@ -1,8 +1,5 @@
 from PyQt4 import QtCore, QtGui
-from PyQt4 import QtWebKit
 
-import sqlite3
-import feedparser
 import uimainwindow as mw
 import kratom
 import sys
