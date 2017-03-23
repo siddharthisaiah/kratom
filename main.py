@@ -1,4 +1,5 @@
 from PyQt4 import QtCore, QtGui
+from threading import Thread
 
 import uimainwindow as mw
 import kratom
@@ -18,6 +19,9 @@ def main():
     kratom.refresh_subscriptions_list(ui)
     # check for new articles
     ui.refresh_feeds()
+
+    thread = Thread(target = kratom.timed_refresh_feeds, args=ui)
+    thread.start()
 
     MainWindow.show()
     sys.exit(app.exec_())
