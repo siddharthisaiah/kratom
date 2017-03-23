@@ -20,10 +20,14 @@ def main():
     # check for new articles
     ui.refresh_feeds()
 
-    thread = Thread(target = kratom.timed_refresh_feeds, args=ui)
-    thread.start()
+    kratom.timed_refresh_feeds(ui)
 
     MainWindow.show()
+
+    # thread = Thread(target=kratom.timed_refresh_feeds(ui))
+    # thread.start()
+
+
     sys.exit(app.exec_())
 
 

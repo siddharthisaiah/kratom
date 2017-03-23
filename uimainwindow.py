@@ -4,6 +4,7 @@ import kratom
 import sqlite3
 from PyQt4 import QtCore, QtGui
 from PyQt4 import QtWebKit
+import threading
 
 # TODO: Create a settings window to configure user settings
 
@@ -67,6 +68,8 @@ class UiMainWindow(ui_MainWindow.Ui_MainWindow):
         # get a list of distinct feed urls
         # send them to parse_feed
         # if user has selected a feed - updated the articles list for that feed
+
+        # threading.Timer(30, self.refresh_feeds, args=(self, )).start()
 
         connection = sqlite3.connect('feeds.db')
         cursor = connection.cursor()

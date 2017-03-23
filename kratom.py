@@ -1,13 +1,12 @@
 import feedparser
 import sqlite3
 from time import sleep
+import threading
 
 
 def timed_refresh_feeds(ui):
+    threading.Timer(15*60, timed_refresh_feeds, args=(ui, )).start()
     ui.refresh_feeds()
-    sleep(120)
-
-    timed_refresh_feeds(ui)
 
 
 def new_subscription(url):
